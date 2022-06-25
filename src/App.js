@@ -1,6 +1,8 @@
 import "./App.css";
 import React, { Component } from "react";
 import CardList from "./components/cardList";
+import SearchBar from "./components/searchBar";
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -36,12 +38,7 @@ class App extends Component {
     return (
       <div className=" App-header">
         <h1>All monestrs</h1>
-        <input
-          type="search"
-          className="search-box"
-          placeholder="search monesters"
-          onChange={this.onSearchChange}
-        />
+        <SearchBar onSearchChange={this.onSearchChange} />
         <CardList list={filteredArray} />
       </div>
     );
