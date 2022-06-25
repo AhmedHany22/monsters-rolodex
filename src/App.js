@@ -1,4 +1,6 @@
+import "./App.css";
 import React, { Component } from "react";
+import CardList from "./components/cardList";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +19,7 @@ class App extends Component {
             return { monsters: users };
           },
           () => {
-            console.log(this.state.monsters);
+            console.log(`The current monester list ${this.state.monsters}`);
           }
         )
       );
@@ -32,7 +34,7 @@ class App extends Component {
     });
 
     return (
-      <div>
+      <div className=" App-header">
         <h1>All monestrs</h1>
         <input
           type="search"
@@ -40,11 +42,7 @@ class App extends Component {
           placeholder="search monesters"
           onChange={this.onSearchChange}
         />
-        <ul>
-          {filteredArray.map((monster) => (
-            <li key={monster.id}>{monster.name}</li>
-          ))}
-        </ul>
+        <CardList list={filteredArray} />
       </div>
     );
   }
