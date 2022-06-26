@@ -1,0 +1,30 @@
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: #202529ec;
+  border: 4px solid #131216;
+  border-radius: 5px;
+  cursor: pointer;
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: transform 0.25s ease-out;
+  text-align: center;
+  font-size: 8px;
+
+  img {
+    width: 100%;
+  }
+}
+
+.cardContainer:hover {
+  transform: scale(1.05);
+}
+.cardList {
+  width: 65vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 25px;
+  margin-bottom: 70px;
+}

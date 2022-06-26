@@ -37,7 +37,7 @@ class App extends Component {
 
     return (
       <div className=" App-header">
-        <h1>All monestrs</h1>
+        <h1>Yu-Gi-Oh Cards</h1>
         <SearchBar onSearchChange={this.onSearchChange} />
         <CardList list={filteredArray} />
       </div>

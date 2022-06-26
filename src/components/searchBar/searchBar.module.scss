@@ -1,0 +1,14 @@
+.searchBar {
+  width: 40vw;
+  margin-bottom: 5vh;
+  font-size: 16px;
+  padding: 8px;
+  background-color: #202529;
+  border: 3px solid #131216;
+  border-radius: 8px;
+  color: rgb(246, 255, 0);
+
+  ::placeholder {
+    color: #fff;
+  }
+}

@@ -6,7 +6,12 @@ class SearchBar extends Component {
   render() {
     const { onSearchChange } = this.props;
     return (
-      <input type="search" placeholder="search..." onChange={onSearchChange} />
+      <input
+        type="search"
+        placeholder="search..."
+        onChange={onSearchChange}
+        className={styles.searchBar}
+      />
     );
   }
 }
