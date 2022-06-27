@@ -1,48 +1,36 @@
 import "./App.css";
-import React, { Component } from "react";
+import { useState, useEffect } from "react";
 import CardList from "./components/cardList";
 import SearchBar from "./components/searchBar";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      monsters: [],
-      searchTerm: "",
-    };
-  }
+const App = () => {
+  const [monsters, setMonsters] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredArray, setFilteredArray] = useState(monsters);
 
-  componentDidMount() {
+  const onSearchChange = (e) => setSearchTerm(e.target.value);
+
+  useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
-      .then((users) =>
-        this.setState(
-          () => {
-            return { monsters: users };
-          },
-          () => {
-            console.log(`The current monester list ${this.state.monsters}`);
-          }
-        )
-      );
-  }
+      .then((users) => setMonsters(users));
+  }, []);
 
-  onSearchChange = (e) => this.setState({ searchTerm: e.target.value });
-
-  render() {
-    const { monsters, searchTerm } = this.state;
-    const filteredArray = monsters.filter((user) => {
+  useEffect(() => {
+    const filtered = monsters.filter((user) => {
       return user.name.toLowerCase().includes(searchTerm.toLowerCase());
     });
+    setFilteredArray(filtered);
+  }, [searchTerm, monsters]);
+  console.log("hi");
 
-    return (
-      <div className=" App-header">
-        <h1>Yu-Gi-Oh Cards</h1>
-        <SearchBar onSearchChange={this.onSearchChange} />
-        <CardList list={filteredArray} />
-      </div>
-    );
-  }
-}
+  return (
+    <div className=" App-header">
+      <h1>Yu-Gi-Oh Cards</h1>
+      <SearchBar onSearchChange={onSearchChange} />
+      <CardList list={filteredArray} />
+    </div>
+  );
+};
 
 export default App;
